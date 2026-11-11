@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sadat Ali — Cybersecurity Engineer</title>
+<meta name="description" content="Sadat Ali — Cybersecurity Engineer specializing in offensive security, ethical hacking, threat analysis and digital forensics." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0c; --bg-soft:#101014; --panel:#141418; --panel-2:#17171c;
+    --line:#26262e; --text:#e9e9ee; --muted:#9a9aa6; --dim:#6a6a76;
+    --amber:#ffb020; --amber-soft:#ffcf6b; --crimson:#ff3b4e; --crimson-soft:#ff6f7d;
+    --glow:rgba(255,176,32,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'Inter',system-ui,sans-serif; line-height:1.6;
+    overflow-x:hidden; -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(900px 500px at 80% -10%, rgba(255,176,32,.08), transparent 60%),
+      radial-gradient(700px 500px at 0% 20%, rgba(255,59,78,.06), transparent 55%),
+      linear-gradient(transparent 0 97%, rgba(255,176,32,.03) 100%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0 1px, transparent 1px 40px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.015) 0 1px, transparent 1px 40px);
+  }
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px; position:relative; z-index:1}
+  a{color:inherit; text-decoration:none}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .amber{color:var(--amber)} .crimson{color:var(--crimson)}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50; backdrop-filter:blur(10px);
+    background:rgba(10,10,12,.72); border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex; align-items:center; justify-content:space-between; height:62px}
+  .brand{font-family:'JetBrains Mono',monospace; font-weight:700; letter-spacing:.5px}
+  .brand .b{color:var(--amber)} .brand .c{color:var(--crimson)}
+  .nav-links{display:flex; gap:26px; font-size:.86rem}
+  .nav-links a{color:var(--muted); transition:color .2s; font-weight:500}
+  .nav-links a:hover{color:var(--amber)}
+  .nav-toggle{display:none;background:none;border:0;color:var(--amber);font-size:1.5rem;cursor:pointer}
+  @media(max-width:720px){ .nav-links{display:none} .nav-links.open{display:flex;position:absolute;top:62px;left:0;right:0;flex-direction:column;background:var(--bg-soft);padding:18px 24px;border-bottom:1px solid var(--line)} .nav-toggle{display:block} }
+
+  /* HERO */
+  header{padding:92px 0 72px}
+  .tag{
+    display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace;
+    font-size:.78rem; color:var(--amber); border:1px solid rgba(255,176,32,.3);
+    background:rgba(255,176,32,.06); padding:6px 12px; border-radius:100px; margin-bottom:22px;
+  }
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  h1{font-size:clamp(2.4rem,6vw,4.1rem); line-height:1.04; font-weight:800; letter-spacing:-1.5px}
+  h1 .grad{background:linear-gradient(100deg,var(--amber),var(--crimson)); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .role{font-family:'JetBrains Mono',monospace; font-size:clamp(1rem,2.6vw,1.35rem); color:var(--muted); margin-top:16px; min-height:1.6em}
+  .role .cursor{color:var(--amber); animation:blink 1s step-end infinite}
+  @keyframes blink{50%{opacity:0}}
+  .lead{max-width:620px; color:var(--muted); margin-top:20px; font-size:1.02rem}
+  .cta{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap}
+  .btn{
+    font-family:'JetBrains Mono',monospace; font-size:.86rem; font-weight:500;
+    padding:12px 22px; border-radius:10px; transition:all .22s; cursor:pointer; border:1px solid transparent;
+  }
+  .btn-primary{background:linear-gradient(100deg,var(--amber),#ff8f1f); color:#140b00; font-weight:700}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 30px -8px var(--glow)}
+  .btn-ghost{border-color:var(--line); color:var(--text)}
+  .btn-ghost:hover{border-color:var(--amber); color:var(--amber)}
+
+  /* TERMINAL CARD */
+  .term{margin-top:50px; border:1px solid var(--line); border-radius:14px; background:linear-gradient(180deg,var(--panel),var(--bg-soft)); overflow:hidden; box-shadow:0 30px 70px -40px #000}
+  .term-bar{display:flex; align-items:center; gap:8px; padding:12px 16px; border-bottom:1px solid var(--line); background:var(--panel-2)}
+  .term-bar i{width:12px;height:12px;border-radius:50%;display:block}
+  .term-bar .r{background:#ff5f56}.term-bar .y{background:#ffbd2e}.term-bar .g{background:#27c93f}
+  .term-bar span{margin-left:10px; font-family:'JetBrains Mono',monospace; font-size:.78rem; color:var(--dim)}
+  .term-body{padding:22px; font-family:'JetBrains Mono',monospace; font-size:.9rem; line-height:1.9}
+  .term-body .p{color:var(--amber)} .term-body .k{color:var(--crimson)} .term-body .v{color:var(--text)} .term-body .m{color:var(--dim)}
+
+  /* SECTIONS */
+  section{padding:74px 0; position:relative}
+  .sec-head{display:flex; align-items:center; gap:14px; margin-bottom:38px}
+  .sec-head .num{font-family:'JetBrains Mono',monospace; color:var(--amber); font-size:.9rem}
+  .sec-head h2{font-size:clamp(1.5rem,4vw,2.1rem); font-weight:700; letter-spacing:-.5px}
+  .sec-head .rule{flex:1; height:1px; background:linear-gradient(90deg,var(--line),transparent)}
+
+  .about-grid{display:grid; grid-template-columns:1.3fr .85fr; gap:40px; align-items:start}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr}}
+  .about p{color:var(--muted); margin-bottom:16px}
+  .about strong{color:var(--text); font-weight:600}
+  .stat-card{border:1px solid var(--line); border-radius:12px; background:var(--panel); padding:22px}
+  .stat-row{display:flex; justify-content:space-between; padding:11px 0; border-bottom:1px dashed var(--line); font-size:.9rem}
+  .stat-row:last-child{border:0}
+  .stat-row span:first-child{color:var(--dim); font-family:'JetBrains Mono',monospace}
+  .stat-row span:last-child{color:var(--amber); font-weight:600}
+
+  /* SKILLS */
+  .skill-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
+  @media(max-width:720px){.skill-grid{grid-template-columns:1fr}}
+  .skill-cat{border:1px solid var(--line); border-radius:12px; background:var(--panel); padding:24px; transition:border-color .25s, transform .25s}
+  .skill-cat:hover{border-color:rgba(255,176,32,.4); transform:translateY(-3px)}
+  .skill-cat h3{font-size:1rem; margin-bottom:16px; display:flex; align-items:center; gap:10px}
+  .skill-cat h3 .ic{color:var(--crimson)}
+  .chips{display:flex; flex-wrap:wrap; gap:8px}
+  .chip{font-family:'JetBrains Mono',monospace; font-size:.78rem; padding:6px 11px; border-radius:7px; background:var(--panel-2); border:1px solid var(--line); color:var(--muted); transition:all .2s}
+  .chip:hover{color:var(--amber); border-color:rgba(255,176,32,.4)}
+
+  /* EXPERIENCE */
+  .timeline{border-left:2px solid var(--line); margin-left:8px; padding-left:28px; display:flex; flex-direction:column; gap:30px}
+  .tl{position:relative}
+  .tl::before{content:""; position:absolute; left:-36px; top:4px; width:14px; height:14px; border-radius:50%; background:var(--bg); border:2px solid var(--amber); box-shadow:0 0 12px var(--glow)}
+  .tl .when{font-family:'JetBrains Mono',monospace; font-size:.76rem; color:var(--crimson); letter-spacing:.5px}
+  .tl h3{font-size:1.1rem; margin:6px 0 4px}
+  .tl .org{color:var(--amber); font-size:.9rem; font-weight:500}
+  .tl p{color:var(--muted); font-size:.92rem; margin-top:8px}
+
+  /* PROJECTS */
+  .proj-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
+  @media(max-width:720px){.proj-grid{grid-template-columns:1fr}}
+  .proj{border:1px solid var(--line); border-radius:12px; background:linear-gradient(180deg,var(--panel),var(--bg-soft)); padding:24px; transition:all .25s; position:relative; overflow:hidden}
+  .proj::after{content:""; position:absolute; top:0; left:0; width:100%; height:2px; background:linear-gradient(90deg,var(--amber),var(--crimson)); transform:scaleX(0); transform-origin:left; transition:transform .3s}
+  .proj:hover{transform:translateY(-4px); border-color:rgba(255,176,32,.35)}
+  .proj:hover::after{transform:scaleX(1)}
+  .proj .ic{font-size:1.4rem; margin-bottom:12px}
+  .proj h3{font-size:1.05rem; margin-bottom:8px}
+  .proj p{color:var(--muted); font-size:.88rem; margin-bottom:16px}
+  .proj .tech{display:flex; flex-wrap:wrap; gap:6px}
+  .proj .tech span{font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--dim); border:1px solid var(--line); padding:3px 8px; border-radius:6px}
+
+  /* CONTACT */
+  .contact{text-align:center; border:1px solid var(--line); border-radius:16px; background:linear-gradient(180deg,var(--panel),var(--bg-soft)); padding:54px 24px; margin-top:10px}
+  .contact h2{font-size:clamp(1.6rem,4vw,2.3rem); margin-bottom:12px}
+  .contact p{color:var(--muted); max-width:460px; margin:0 auto 28px}
+  .socials{display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
+  .soc{display:flex; align-items:center; gap:9px; font-family:'JetBrains Mono',monospace; font-size:.85rem; padding:12px 20px; border:1px solid var(--line); border-radius:10px; transition:all .22s}
+  .soc:hover{border-color:var(--amber); color:var(--amber); transform:translateY(-2px)}
+
+  footer{text-align:center; padding:40px 0; color:var(--dim); font-family:'JetBrains Mono',monospace; font-size:.8rem; border-top:1px solid var(--line); margin-top:40px}
+
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .6s, transform .6s}
+  .reveal.in{opacity:1; transform:none}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="brand"><span class="b">sadat</span><span class="c">_ali</span><span class="amber">:~$</span></a>
+    <button class="nav-toggle" aria-label="menu" onclick="document.getElementById('nl').classList.toggle('open')">⌘</button>
+    <div class="nav-links" id="nl">
+      <a href="#about">about</a>
+      <a href="#skills">arsenal</a>
+      <a href="#experience">experience</a>
+      <a href="#projects">projects</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<div id="top"></div>
+<header>
+  <div class="wrap">
+    <div class="tag"><span class="dot"></span> AVAILABLE FOR OPPORTUNITIES</div>
+    <h1>Sadat Ali<br><span class="grad">Cybersecurity Engineer</span></h1>
+    <div class="role mono" id="role"><span class="cursor">_</span></div>
+    <p class="lead">I break things to understand how to defend them. Focused on offensive security, ethical hacking, threat analysis and digital forensics — turning curiosity about attacks into stronger, safer systems.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#projects">./view_projects</a>
+      <a class="btn btn-ghost" href="#contact">get_in_touch</a>
+    </div>
+
+    <div class="term reveal">
+      <div class="term-bar"><i class="r"></i><i class="y"></i><i class="g"></i><span>sadat@secops: ~/whoami</span></div>
+      <div class="term-body">
+        <div class="m">$ <span class="p">whoami</span> --profile</div>
+        <div><span class="k">role</span><span class="m">:    </span><span class="v">Cybersecurity Engineer</span></div>
+        <div><span class="k">focus</span><span class="m">:   </span><span class="v">Offensive Security · Ethical Hacking · Threat Analysis</span></div>
+        <div><span class="k">edu</span><span class="m">:     </span><span class="v">BS Cybersecurity — COMSATS University Islamabad</span></div>
+        <div><span class="k">based</span><span class="m">:   </span><span class="v">Islamabad, Pakistan 🇵🇰</span></div>
+        <div><span class="k">status</span><span class="m">:  </span><span class="amber">ready to deploy ▸</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">01.</span><h2>About</h2><div class="rule"></div></div>
+    <div class="about-grid">
+      <div class="about reveal">
+        <p>I'm a <strong>cybersecurity engineer</strong> and ethical hacking enthusiast currently pursuing my Bachelor's in Cybersecurity at <strong>COMSATS University Islamabad</strong>. My work lives at the intersection of offense and defense — I study how attackers think so I can build systems that hold up against them.</p>
+        <p>I've built tooling for <strong>OSINT and reconnaissance</strong>, <strong>packet analysis</strong>, <strong>wordlist/dictionary generation</strong>, and <strong>ransomware simulation & prevention</strong>, and I sharpen my skills continuously through <strong>Capture The Flag</strong> competitions across cryptography, forensics and reverse engineering.</p>
+        <p>I completed a cybersecurity <strong>internship at NCCIA</strong> (National Cyber Crime Investigation Agency), gaining hands-on exposure to real-world cybercrime investigation and digital security practices.</p>
+        <p>Now I'm channeling that foundation into <strong>industry-level security engineering</strong> — ready to contribute to teams that take defense seriously.</p>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-row"><span>role</span><span>SecEngineer</span></div>
+        <div class="stat-row"><span>specialty</span><span>Offensive Sec</span></div>
+        <div class="stat-row"><span>education</span><span>COMSATS</span></div>
+        <div class="stat-row"><span>location</span><span>Islamabad</span></div>
+        <div class="stat-row"><span>ctf</span><span>Active Player</span></div>
+        <div class="stat-row"><span>coffee→code</span><span>∞</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">02.</span><h2>Arsenal</h2><div class="rule"></div></div>
+    <div class="skill-grid">
+      <div class="skill-cat reveal">
+        <h3><span class="ic">▸</span> Offensive Security</h3>
+        <div class="chips">
+          <span class="chip">Penetration Testing</span><span class="chip">Vulnerability Assessment</span>
+          <span class="chip">Ethical Hacking</span><span class="chip">OSINT & Recon</span>
+          <span class="chip">Exploit Analysis</span><span class="chip">Reverse Engineering</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal">
+        <h3><span class="ic">▸</span> Defensive & Analysis</h3>
+        <div class="chips">
+          <span class="chip">Threat Analysis</span><span class="chip">Network Security</span>
+          <span class="chip">Incident Response</span><span class="chip">Digital Forensics</span>
+          <span class="chip">Packet Analysis</span><span class="chip">Cryptography</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal">
+        <h3><span class="ic">▸</span> Tools & Platforms</h3>
+        <div class="chips">
+          <span class="chip">Kali Linux</span><span class="chip">Wireshark</span>
+          <span class="chip">Nmap</span><span class="chip">Burp Suite</span>
+          <span class="chip">Metasploit</span><span class="chip">angr</span>
+          <span class="chip">Git</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal">
+        <h3><span class="ic">▸</span> Languages</h3>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">C / C++</span>
+          <span class="chip">Bash</span><span class="chip">Java</span>
+          <span class="chip">SQL</span><span class="chip">Dart/Flutter</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">03.</span><h2>Experience</h2><div class="rule"></div></div>
+    <div class="timeline">
+      <div class="tl reveal">
+        <div class="when">INTERNSHIP</div>
+        <h3>Cybersecurity Intern</h3>
+        <div class="org">NCCIA — National Cyber Crime Investigation Agency</div>
+        <p>Gained hands-on experience in cybercrime investigation workflows, digital evidence handling and applied security practices in a real operational environment.</p>
+      </div>
+      <div class="tl reveal">
+        <div class="when">ONGOING</div>
+        <h3>CTF Competitor</h3>
+        <div class="org">Capture The Flag — Cryptography · Forensics · Reversing</div>
+        <p>Actively compete in CTF challenges, authoring write-ups and solving problems across cryptography, reverse engineering (angr), forensics and web exploitation to stay sharp on emerging techniques.</p>
+      </div>
+      <div class="tl reveal">
+        <div class="when">2021 — PRESENT</div>
+        <h3>BS Cybersecurity</h3>
+        <div class="org">COMSATS University Islamabad</div>
+        <p>Building deep foundations in network security, cryptography, secure systems design, OOP and applied digital security.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">04.</span><h2>Projects</h2><div class="rule"></div></div>
+    <div class="proj-grid">
+      <div class="proj reveal">
+        <div class="ic">🔒</div>
+        <h3>Ransomware Simulation &amp; Prevention</h3>
+        <p>A controlled simulation of ransomware encryption behaviour paired with prevention and detection strategies — built to study attack mechanics and harden defenses.</p>
+        <div class="tech"><span>Python</span><span>Cryptography</span><span>Malware Analysis</span></div>
+      </div>
+      <div class="proj reveal">
+        <div class="ic">🛰️</div>
+        <h3>OSINT Reconnaissance Toolkit</h3>
+        <p>Tooling for open-source intelligence gathering and footprinting — automating reconnaissance to map a target's public attack surface.</p>
+        <div class="tech"><span>Python</span><span>OSINT</span><span>Recon</span></div>
+      </div>
+      <div class="proj reveal">
+        <div class="ic">📡</div>
+        <h3>Network Packet Sniffer</h3>
+        <p>A packet capture and analysis tool that inspects live network traffic to surface protocols, metadata and anomalies — built during security internship work.</p>
+        <div class="tech"><span>Python</span><span>Sockets</span><span>Network Security</span></div>
+      </div>
+      <div class="proj reveal">
+        <div class="ic">🗝️</div>
+        <h3>Dictionary / Wordlist Generator</h3>
+        <p>A customizable wordlist generator for password auditing and penetration testing engagements, producing targeted dictionaries from configurable rules.</p>
+        <div class="tech"><span>Python</span><span>Pentesting</span><span>Automation</span></div>
+      </div>
+      <div class="proj reveal">
+        <div class="ic">🧪</div>
+        <h3>File Encryptor</h3>
+        <p>A command-line file encryption utility implementing symmetric encryption in C++ — a practical dive into applied cryptography and secure file handling.</p>
+        <div class="tech"><span>C++</span><span>Cryptography</span></div>
+      </div>
+      <div class="proj reveal">
+        <div class="ic">🚩</div>
+        <h3>CTF Write-ups &amp; Solutions</h3>
+        <p>A growing collection of Capture The Flag solutions and write-ups spanning crypto, forensics and reverse engineering with angr-based automation.</p>
+        <div class="tech"><span>Python</span><span>angr</span><span>Reversing</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact reveal">
+      <h2>Let's build a <span class="amber">safer</span> digital world</h2>
+      <p>Open to roles, collaborations and interesting security problems. Reach out — I usually respond fast.</p>
+      <div class="socials">
+        <a class="soc" href="https://github.com/Sadatali9" target="_blank" rel="noopener">⬡ GitHub</a>
+        <a class="soc" href="https://www.linkedin.com/in/sadat-ali-7216b3275" target="_blank" rel="noopener">in LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Designed &amp; built by Sadat Ali · <span class="amber">&lt;/&gt;</span> with precision · © 2026</div>
+</footer>
+
+<script>
+  // typing roles
+  const roles = ["> ethical_hacker","> threat_analyst","> penetration_tester","> ctf_player","> security_engineer"];
+  const el = document.getElementById('role');
+  let ri=0, ci=0, del=false;
+  function type(){
+    const w = roles[ri];
+    el.innerHTML = (del ? w.substring(0,ci--) : w.substring(0,ci++)) + '<span class="cursor">_</span>';
+    let d = del ? 45 : 85;
+    if(!del && ci===w.length+1){ d=1500; del=true; }
+    else if(del && ci<0){ del=false; ci=0; ri=(ri+1)%roles.length; d=300; }
+    setTimeout(type,d);
+  }
+  type();
+
+  // scroll reveal
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(n=>io.observe(n));
+
+  // close mobile menu on click
+  document.querySelectorAll('#nl a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nl').classList.remove('open')));
+</script>
+</body>
+</html>
