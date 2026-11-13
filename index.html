@@ -132,6 +132,13 @@
   .proj h3{font-size:1.05rem; margin-bottom:8px}
   .proj p{color:var(--muted); font-size:.88rem; margin-bottom:16px}
   .proj .tech{display:flex; flex-wrap:wrap; gap:6px}
+  .proj.feature{grid-column:1/-1; border-color:rgba(255,176,32,.35)}
+  .proj.feature::after{transform:scaleX(1)}
+  .proj .badge{display:inline-flex; align-items:center; gap:7px; font-family:'JetBrains Mono',monospace; font-size:.7rem; letter-spacing:.06em; color:var(--amber); border:1px solid rgba(255,176,32,.4); padding:3px 10px; border-radius:999px; margin-bottom:12px}
+  .proj .badge i{width:7px; height:7px; border-radius:50%; background:var(--amber); animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .proj ul{color:var(--muted); font-size:.88rem; margin:0 0 16px 18px}
+  .proj ul li{margin-bottom:4px}
   .proj .tech span{font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--dim); border:1px solid var(--line); padding:3px 8px; border-radius:6px}
 
   /* CONTACT */
@@ -197,6 +204,7 @@
         <p>I'm a <strong>cybersecurity engineer</strong> and ethical hacking enthusiast currently pursuing my Bachelor's in Cybersecurity at <strong>COMSATS University Islamabad</strong>. My work lives at the intersection of offense and defense — I study how attackers think so I can build systems that hold up against them.</p>
         <p>I've built tooling for <strong>OSINT and reconnaissance</strong>, <strong>packet analysis</strong>, <strong>wordlist/dictionary generation</strong>, and <strong>ransomware simulation & prevention</strong>, and I sharpen my skills continuously through <strong>Capture The Flag</strong> competitions across cryptography, forensics and reverse engineering.</p>
         <p>I completed a cybersecurity <strong>internship at NCCIA</strong> (National Cyber Crime Investigation Agency), gaining hands-on exposure to real-world cybercrime investigation and digital security practices.</p>
+        <p>I'm currently building my Final Year Project, <strong>MST (Multi-Agent Security &amp; Trust)</strong>: a runtime trust and containment layer that monitors autonomous AI agents on Kubernetes from the kernel up, and isolates compromised agents automatically.</p>
         <p>Now I'm channeling that foundation into <strong>industry-level security engineering</strong> — ready to contribute to teams that take defense seriously.</p>
       </div>
       <div class="stat-card reveal">
@@ -282,6 +290,19 @@
   <div class="wrap">
     <div class="sec-head reveal"><span class="num">04.</span><h2>Projects</h2><div class="rule"></div></div>
     <div class="proj-grid">
+      <div class="proj feature reveal">
+        <div class="badge"><i></i> FINAL YEAR PROJECT · IN DEVELOPMENT</div>
+        <div class="ic">🛡️</div>
+        <h3>MST — Multi-Agent Security &amp; Trust</h3>
+        <p>A runtime security layer for autonomous AI-agent ecosystems on Kubernetes. Identity checks tell you <em>who</em> an agent is; MST watches <strong>what it actually does</strong>, and keeps deciding how far each agent can still be trusted.</p>
+        <ul>
+          <li><strong>Kernel-level visibility:</strong> every syscall from every agent, in any language, through a gVisor sandbox. No changes to agent code.</li>
+          <li><strong>Behaviour monitoring:</strong> a graph neural network on agent-to-agent communication, plus a tool-call detector that catches prompt-injection-driven misuse.</li>
+          <li><strong>Output integrity:</strong> gateway-held Ed25519 signing, plus Isolation Forest detection of "signed but wrong" outputs.</li>
+          <li><strong>Trust fusion and containment:</strong> all evidence becomes one continuously updated trust score per agent, which drives automatic watch → restrict → quarantine responses with safety limits and human approval.</li>
+        </ul>
+        <div class="tech"><span>Kubernetes</span><span>gVisor</span><span>Istio/Envoy</span><span>Kafka</span><span>Go</span><span>Python</span><span>PyTorch</span><span>React</span></div>
+      </div>
       <div class="proj reveal">
         <div class="ic">🔒</div>
         <h3>Ransomware Simulation &amp; Prevention</h3>
